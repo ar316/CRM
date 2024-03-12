@@ -1,13 +1,14 @@
+import UI from "./UI.js";
+import { formlario } from "./selectores.js";
 
-const formlario = document.querySelector('.formulario');
 console.log(formlario);
+
 document.addEventListener('DOMContentLoaded',()=>{
 
     formlario.addEventListener('submit', validarformulario);
 });
 
-
-
+const ui = new UI();
 
 function validarformulario(e){
     e.preventDefault();
@@ -18,11 +19,12 @@ function validarformulario(e){
     
     
     if(nombre === "" || email === "" || telefono === ""){
-        console.log("hay un espacio vacio no puede agregar");
+        ui.imprimirAlerta("Todos los campos son obligatorios", "error");
         return;
     }
+    ui.imprimirAlerta("Cliente agregado correctamente", "bien");
+    formlario.reset();
     console.log(nombre + telefono + email);
-
 
 
 }
